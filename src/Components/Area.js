@@ -5,13 +5,22 @@ export default function Hypotenuse() {
   const [value2, setValue2] = useState();
   const [result, setResult] = useState("");
 
+  var isValid = false;
+
   var calculateArea = () => {
     const a = Number(value1);
     const b = Number(value2);
     if (!isNaN(a) && !isNaN(b) && value1 !== "" && value2 !== "") {
-      setResult("Area of Triangle: " + 0.5 * a * b);
+      if (a > 0 && b > 0) {
+        isValid = true;
+        setResult("Area of Triangle: " + 0.5 * a * b);
+      } else {
+        isValid = false;
+        setResult("Invalid input. Value should be greater than zero.");
+      }
     } else {
-      setResult("Please enter all details");
+      isValid = false;
+      setResult("Invalid input. Please try again.");
     }
   };
 
@@ -39,7 +48,7 @@ export default function Hypotenuse() {
       />
       <div className="app__resultlabel">
         {result}
-        {result !== "" && result !== "Please enter all details" ? (
+        {isValid ? (
           <>
             cm<sup>2</sup>
           </>

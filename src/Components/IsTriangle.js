@@ -18,13 +18,17 @@ export default function IsTriangle() {
       value2 !== "" &&
       value3 !== ""
     ) {
-      if (a + b + c === 180) {
-        setResult("This is a triangle");
+      if (a > 0 && b > 0 && c > 0) {
+        if (a + b + c === 180) {
+          setResult("This is a triangle");
+        } else {
+          setResult("This is not a triangle");
+        }
       } else {
-        setResult("This is not a triangle");
+        setResult("Invalid input. Angle should be greater than zero.");
       }
     } else {
-      setResult("Please enter all details");
+      setResult("Invalid input. Please try again.");
     }
   };
 

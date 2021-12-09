@@ -9,10 +9,14 @@ export default function Hypotenuse() {
     const a = Number(value1);
     const b = Number(value2);
     if (!isNaN(a) && !isNaN(b) && value1 !== "" && value2 !== "") {
-      const sum = a * a + b * b;
-      setResult("Length of Hypotenuse: " + Math.sqrt(sum));
+      if (a > 0 && b > 0) {
+        const sum = a * a + b * b;
+        setResult("Length of Hypotenuse: " + Math.sqrt(sum).toFixed(2));
+      } else {
+        setResult("Invalid input. Length should be greater than zero.");
+      }
     } else {
-      setResult("Please enter all details");
+      setResult("Invalid input. Please try again.");
     }
   };
 
